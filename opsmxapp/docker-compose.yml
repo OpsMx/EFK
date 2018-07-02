@@ -1,12 +1,12 @@
 version: '2'
 services:
   opsmxApp:
-    image: opsmx11/analyzer:restapp-latest
-    container_name: opsmx_log-server
+    image: demoapp
+    container_name: demo_log-server
     ports:
        - "9090:8080"
     logging:
       driver: "fluentd"
       options:
         fluentd-address: localhost:24224
-        tag: restapp.access
+        tag: demoapp.access
