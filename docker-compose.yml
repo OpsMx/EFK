@@ -1,7 +1,6 @@
 version: '2'
 services:
   web:
-    #image: httpd
     image: opsmx11/analyzer:restapp-latest
     container_name: opsmx_base
     ports:
