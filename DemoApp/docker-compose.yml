@@ -1,0 +1,12 @@
+version: '2'
+services:
+  opsmxApp:
+    image: demoapp
+    container_name: demo-log-server
+    ports:
+       - "9090:8080"
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: demo.access
