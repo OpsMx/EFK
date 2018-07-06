@@ -1,26 +1,28 @@
-version: '2'
+version: '3'
 services:
 
   fluentd:
-    build: ./fluentd
+    image: fluentd
     volumes:
       - ./fluentd/conf:/fluentd/etc
-    links:
-      - "elasticsearch"
     ports:
       - "24224:24224"
       - "24224:24224/udp"
 
   elasticsearch:
-    image: elasticsearch
+    image: elastic/elasticsearch
+    deploy:
+      resources:
+        limits:
+          memory: 3500M
+        reservations:
+          memory: 2500M
     expose:
       - 9200
     ports:
       - "9200:9200"
 
   kibana:
-    image: kibana
-    links:
-      - "elasticsearch"
+    image: elastic/kibana
     ports:
       - "5601:5601"
